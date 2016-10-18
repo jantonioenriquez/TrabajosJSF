@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.cancionListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.cancionListTitle}</h2>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{cancionBean.agregar()}"></p:commandButton>
+                </h:form>
+                <p:dataTable value="#{cancionBean.canciones}" var="c">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <h:commandButton value="#{str.buttonEdit}"
+                                             action="#{cancionBean.editar(c)}"></h:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column headerText="#{str.cancionNombreHeader}">
+                        <p:outputLabel value="#{c.nombreCancion}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.cancionGeneroHeader}">
+                        <p:outputLabel value="#{c.genero}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.cancionDuracionHeader}">
+                        <p:outputLabel value="#{c.duracion}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="#{str.cancionInterpreteHeader}">
+                        <p:outputLabel value="#{c.interprete.nombre}"></p:outputLabel>
+                    </p:column>
+
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

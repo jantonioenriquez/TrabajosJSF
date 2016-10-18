@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.interpreteFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.interpreteFormHeader}</h2>
+                <p:fieldset legend="#{str.interpreteLegendForm}">
+                    <h:form>
+                        <h:panelGrid columns="1">
+                            <p:inputText placeholder="#{str.interpreteNombrePrompt}"
+                                         value="#{interpreteBean.interprete.nombre}"></p:inputText>
+
+                            <p:inputText placeholder="#{str.interpreteApellidoPrompt}"
+                                         value="#{interpreteBean.interprete.apellidos}"></p:inputText>
+                                         
+                            <p:inputText placeholder="#{str.interpreteEdadPrompt}"
+                                         value="#{interpreteBean.interprete.edad}"></p:inputText>
+
+                            
+                        </h:panelGrid>
+                        <p:commandButton value="#{str.buttonSave}"
+                                         action="#{interpreteBean.guardar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}"
+                                         action="#{interpreteBean.eliminar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}"
+                                         action="#{interpreteBean.cancelar()}"></p:commandButton>
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.interpreteListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.interpreteListTitle}</h2>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{interpreteBean.agregar()}"></p:commandButton>
+                </h:form>
+                <p:dataTable value="#{interpreteBean.interpretes}" var="i">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <h:commandButton value="#{str.buttonEdit}"
+                                             action="#{interpreteBean.editar(i)}"></h:commandButton>
+                        </h:form>
+                    </p:column>
+
+                    <p:column headerText="#{str.interpreteNombreHeader}">
+                        <p:outputLabel value="#{i.nombre}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="#{str.interpreteApellidoHeader}">
+                        <p:outputLabel value="#{i.apellidos}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="#{str.interpreteEdadHeader}">
+                        <p:outputLabel value="#{i.edad}"></p:outputLabel>
+                    </p:column>
+
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
